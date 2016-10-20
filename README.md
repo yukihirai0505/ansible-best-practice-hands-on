@@ -26,7 +26,11 @@ ansible for local
 - stage
 - production
 
-`vagrant up`
+```
+$ git clone https://github.com/yukihirai0505/ansible-best-practice-hands-on
+$ cd ansible-best-practice-hands-on
+$ vagrant up
+```
 
 ### Install Ansible
 
