@@ -74,6 +74,30 @@ ansible-playbook -i production site.yml
 
 ### ansible localhost
 
+use ansible-galaxy first
+
+#### About ansible galaxy
+
+`ansible-galaxy install -p ./roles username.common`
+
+success
+
+`./roles/username.common`
+
+ec)
+
+` ansible-galaxy install -p ./roles geerlingguy.java`
+
+https://galaxy.ansible.com/geerlingguy/java/
+
+#### ansible localhost
+
 ```
 ansible-playbook -i localhost localhost.yml
 ```
+
+to confirm
+
+`java -version`
+
+etc
