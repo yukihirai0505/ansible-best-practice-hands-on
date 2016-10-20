@@ -76,6 +76,28 @@ ansible-playbook -i stage site.yml
 ansible-playbook -i production site.yml
 ```
 
+### About filter-plugin
+
+ex)
+
+`filter_plugins/uppercase.py`
+
+```
+from ansible import errors
+
+def uppercase_all(txt):
+    return txt.upper()
+
+
+class FilterModule(object):
+    def filters(self):
+        return {'uppercase_all': uppercase_all}
+```
+
+is called by
+
+`{{ 'text' | uppercase_all }}`
+
 ### ansible localhost
 
 use ansible-galaxy first
@@ -90,7 +112,7 @@ success
 
 ex)
 
-` ansible-galaxy install -p ./roles geerlingguy.java`
+`ansible-galaxy install -p ./roles geerlingguy.java`
 
 https://galaxy.ansible.com/geerlingguy/java/
 
