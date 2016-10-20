@@ -1,0 +1,9 @@
+---
+
+- name: Copy the i18n file
+  template:
+    src: etc/sysconfig/i18n.j2
+    dest: /etc/sysconfig/i18n
+    owner: root
+    group: root
+    mode: 0644

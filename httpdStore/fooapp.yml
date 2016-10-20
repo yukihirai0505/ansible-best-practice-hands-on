@@ -1,0 +1,6 @@
+- hosts: fooapp
+  become: yes
+  roles:
+    #- common
+    - nginx
+    - fooapp

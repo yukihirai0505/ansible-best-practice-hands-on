@@ -1,0 +1,27 @@
+---
+
+- name: Create /var/www/html directory
+  file:
+    path: /var/{{ item.name }}
+    state: directory
+    mode: 0755
+  with_items:
+    - { name: 'www'      }
+    - { name: 'www/html' }
+
+- name: Copy index.html (/var/www/html/index.html)
+  template:
+    src: var/www/html/index.html.j2
+    dest: /var/www/html/index.html
+    owner: nginx
+    group: nginx
+    mode: 0644
+
+- name: Copy the nginx proxy configuration file (/etc/nginx/conf.d/fooapp.conf)
+  template:
+    src: etc/nginx/conf.d/fooapp.conf.j2
+    dest: /etc/nginx/conf.d/fooapp.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload nginx

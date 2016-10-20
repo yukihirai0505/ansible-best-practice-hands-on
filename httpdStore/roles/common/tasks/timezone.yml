@@ -1,0 +1,24 @@
+---
+
+- name: Make sure tzdata is installed
+  yum: name=tzdata state=present
+
+- name: Check for a zoneinfo file
+  stat: path=/usr/share/zoneinfo/Asia/Tokyo
+  register: zoneinfo
+
+- name: Alert if zoneinfo is not ther
+  fail: msg="Asia/Tokyo is not valid (/usr/share/zoneinfo/Asia/Tokyo dos not exist)"
+  when: not (zoneifno.stat.exists is defined and zoneinfo.stat.exists)
+
+- name: Symlink the correct localtime (/etc/localtime)
+  file:
+    src: /usr/share/zoneinfo/Asia/Tokyo
+    dest: /etc/localtime
+    force: yes
+    state: link
+    owner: root
+    group: root
+    mode: 0644
+  when: zoneinfo.stat.exists is defined and zoneinfo.stat.exists
+  register: timezone_linked

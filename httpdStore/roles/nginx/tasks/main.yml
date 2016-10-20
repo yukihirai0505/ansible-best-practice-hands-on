@@ -1,0 +1,45 @@
+---
+
+- name: Install libselinux-python
+  yum: name=libselinux-python state=installed
+
+- name: Add nginx repo
+  template:
+    src: etc/yum.repos.d/nginx.repo.j2
+    dest: /etc/yum.repos.d/nginx.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install nginx
+  yum: name=nginx state=present
+
+- name: Change nginx log-directory permission
+  file:
+    path: /var/log/nginx
+    state: directory
+    mode: 0755
+
+- name: Enable nginx service
+  service: name=nginx state=started enabled=yes
+
+- name: Change nginx log-file permission
+  file:
+    path: /var/log/nginx/{{ item }}
+    state: file
+    mode: 0644
+  with_items:
+    - access.log
+    - error.log
+
+- name: Copy the nginx configuration file (/etc/nginx/nginx.conf)
+  template:
+    src: etc/nginx/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload nginx
+
+- include: remove_defaults.yml
+  when: nginx_remove_default_conf

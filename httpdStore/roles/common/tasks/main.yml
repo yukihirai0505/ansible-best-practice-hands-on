@@ -1,0 +1,60 @@
+---
+
+- name: install libselinux-python
+  yum: name=libselinux-python state=present
+
+- name: Add epel repository
+  yum: name=epel-release state=present
+  when: ansible_distribution != "Amazon"
+
+- name: Update yum packages
+  yum: name='*' state='latest'
+
+- name: Install packages
+  yum: name={{ item.name }} state={{ item.state }}
+  with_items:
+  - { name: 'zip',                  state: 'present'}
+  - { name: 'unzip',                state: 'present'}
+  - { name: 'wget',                 state: 'present'}
+  - { name: 'sysstat',              state: 'present'}
+  - { name: 'dstat',                state: 'present'}
+  - { name: 'vim',                  state: 'present'}
+  - { name: 'lsof',                 state: 'present'}
+  - { name: 'openssl-devel',        state: 'present'}
+  - { name: 'readline-devel',       state: 'present'}
+  - { name: 'zlib-devel',           state: 'present'}
+  - { name: 'curl-devel',           state: 'present'}
+  - { name: 'ImageMagick',          state: 'present'}
+  - { name: 'ImageMagick-devel',    state: 'present'}
+  - { name: 'glib2-devel',          state: 'present'}
+  - { name: 'gd-devel',             state: 'present'}
+  - { name: 'libxml2-devel',        state: 'present'}
+  - { name: 'libxslt-devel',        state: 'present'}
+  - { name: 'pcre-devel ',          state: 'present'}
+  - { name: 'perl-devel',           state: 'present'}
+  - { name: 'perl-ExtUtils-Embed',  state: 'present'}
+  - { name: 'w3m',                  state: 'present'}
+  - { name: 'bind-utils',           state: 'present'}
+  - { name: 'bzip2-devel',          state: 'present'}
+  - { name: 'ncurses-devel',        state: 'present'}
+  - { name: 'sqlite-devel',         state: 'present'}
+  - { name: 'tk-devel',             state: 'present'}
+
+- name: install the 'Development tools' package group
+  yum: name="@Development tools" state=present
+
+- name: Install packages from epel
+  yum: name={{ item.name }} state={{ item.state }} enablerepo=epel
+  with_items:
+  - { name: 'bash-completion',    state: 'present'}
+
+- name: write syslog at bash-history-command
+  template: src=bash_history_to_syslog.sh.j2
+            dest=/etc/profile.d/bash_history_to_syslog.sh
+            owner=root
+            group=root
+            mode=0644
+
+- include: i18n.yml
+
+- include: timezone.yml

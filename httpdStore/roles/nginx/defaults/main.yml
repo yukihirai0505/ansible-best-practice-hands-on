@@ -1,0 +1,14 @@
+---
+
+# remove /etc/nginx/conf.d/default.conf and example_ssl.conf
+#  yes / no
+nginx_remove_default_conf: yes
+# Add LTSV log format - http://ltsv.org/
+#  yes / no
+nginx_use_ltsv_logformat: yes
+
+# ~~~~~~~~ nginx.conf ~~~~~~~~~~~~
+nginx_config_worker_rlimit_nofile: 10240
+nginx_client_max_body_size: 4M
+# ~~~~~~~~ proxy.conf ~~~~~~~~~~~~
+nginx_proxy_read_timeout: 90
