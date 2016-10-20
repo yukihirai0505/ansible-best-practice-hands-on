@@ -4,8 +4,8 @@ http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout
 
 ## Require
 
-- virtual box
-- vagrant
+- [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
+- [Vagrant](https://www.vagrantup.com/downloads.html)
 
 ## Goal
 
