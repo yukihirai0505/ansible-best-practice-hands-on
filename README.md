@@ -63,7 +63,7 @@ vagrant@host ssh-copy-id production
 ### ansible stage
 
 ```
-ansible-playbook -i production stage.site.yml
+ansible-playbook -i stage stage.site.yml
 ```
 
 ### ansible production
