@@ -84,7 +84,7 @@ success
 
 `./roles/username.common`
 
-ec)
+ex)
 
 ` ansible-galaxy install -p ./roles geerlingguy.java`
 
