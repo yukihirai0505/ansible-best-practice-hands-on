@@ -1,2 +1,5 @@
 [fooapp]
 192.168.43.53
+
+[production:children]
+fooapp

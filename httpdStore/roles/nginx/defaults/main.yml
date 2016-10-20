@@ -9,6 +9,5 @@ nginx_use_ltsv_logformat: yes
 
 # ~~~~~~~~ nginx.conf ~~~~~~~~~~~~
 nginx_config_worker_rlimit_nofile: 10240
-nginx_client_max_body_size: 4M
 # ~~~~~~~~ proxy.conf ~~~~~~~~~~~~
 nginx_proxy_read_timeout: 90
