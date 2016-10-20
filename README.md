@@ -2,25 +2,25 @@
 
 http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout
 
-### Require
+## Require
 
 - virtual box
 - vagrant
 
-### Goal
+## Goal
 
 - Run nginx
 - Display index.html
 
 for stage and production
 
-### Option
+## Option
 
 ansible for local
 
-### Get Started
+## Get Started
 
-#### Up servers
+### Up servers
 
 - host
 - stage
@@ -28,7 +28,7 @@ ansible for local
 
 `vagrant up`
 
-#### Install Ansible
+### Install Ansible
 
 ```
 $ vagrant ssh host
