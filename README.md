@@ -14,6 +14,10 @@ http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout
 
 for stage and production
 
+### Option
+
+ansible for local
+
 ### Get Started
 
 #### Up servers
