@@ -50,11 +50,11 @@ Host production
 ```
 
 ```
-vagrant@host chmod 600 .ssh/config
-vagrant@host ssh-keygen -t rsa
-vagrant@host ssh-copy-id stage
+vagrant@host$ chmod 600 .ssh/config
+vagrant@host$ ssh-keygen -t rsa
+vagrant@host$ ssh-copy-id stage
 # Enter yes,vagrant
-vagrant@host ssh-copy-id production
+vagrant@host$ ssh-copy-id production
 # Enter yes,vagrant
 ```
 
