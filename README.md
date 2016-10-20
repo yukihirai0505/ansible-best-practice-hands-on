@@ -98,6 +98,26 @@ is called by
 
 `{{ 'text' | uppercase_all }}`
 
+### About library
+
+ex)
+
+`library/timetest.py`
+
+```
+#!/usr/bin/python
+
+import datetime
+import json
+
+date = str(datetime.datetime.now())
+print json.dumps({
+    "time" : date
+})
+```
+
+can use own(timetest) module
+
 ### ansible localhost
 
 use ansible-galaxy first

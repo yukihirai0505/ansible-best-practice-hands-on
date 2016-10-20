@@ -25,3 +25,9 @@
     group: root
     mode: 0644
   notify: reload nginx
+
+- name: Execute timetest
+  timetest:
+  register: time
+
+- debug: var=time
